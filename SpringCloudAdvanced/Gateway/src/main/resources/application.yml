@@ -1,0 +1,33 @@
+# Set up the Gateway Server
+server:
+  port: 8765
+
+
+# Route configuration (optional if using Eureka)
+#spring.cloud.gateway.routes[0].id=main-service
+#spring.cloud.gateway.routes[0].uri=http://localhost:8081/
+#spring.cloud.gateway.routes[0].predicates[0]=Header=X-Custom-Header, HeaderValue
+#
+#spring.cloud.gateway.routes[1].igd=vip-service
+#spring.cloud.gateway.routes[1].uri=http://localhost:8082/
+#spring.cloud.gateway.routes[1].predicates[0]=Path=/vip/**
+spring:
+  application:
+    name: API-Gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${server.port} # Ensures consistency in instance naming
+    lease-renewal-interval-in-seconds: 10    # Frequency of service health updates (default is 30)
+    lease-expiration-duration-in-seconds: 30 # Time to wait before removing an unhealthy service (default is 90)
+    health-check-url-path: /actuator/health  # Health endpoint
+    status-page-url-path: /actuator/info     # Optional: general service info

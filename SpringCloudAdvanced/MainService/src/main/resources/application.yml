@@ -1,0 +1,30 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: main-service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+  instance:
+    instance-id: ${spring.application.name}:${server.port} # Ensures consistency in instance naming
+    prefer-ip-address: true  # Uses IP instead of hostname
+    hostname: localhost      # Explicitly set the hostname if needed (localhost in this case)
+
+resilience4j:
+  retry:
+    instances:
+      Main-service-retry:
+        max-attempts: 5
+        wait-duration:
+          seconds: 1
+        enable-exponential-backoff: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="MainService" />
+        <module name="EurekaServer" />
+        <module name="AdvancedSecurity" />
+        <module name="VipService" />
+        <module name="Gateway" />
+        <module name="gateway-service" />
+        <module name="TestingFrameworks" />
+        <module name="DesignPatterns" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="gateway-service" target="17" />
+      <module name="GatewayService" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="AdvancedSecurity" options="-parameters" />
+      <module name="DesignPatterns" options="-parameters" />
+      <module name="EurekaServer" options="-parameters" />
+      <module name="Gateway" options="-parameters" />
+      <module name="GatewayService" options="" />
+      <module name="MainService" options="-parameters" />
+      <module name="SpringCloudAdvanced" options="" />
+      <module name="TestingFrameworks" options="-parameters" />
+      <module name="VipService" options="-parameters" />
+      <module name="gateway-service" options="-parameters" />
+    </option>
+  </component>
+</project>
